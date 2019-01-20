@@ -25,5 +25,6 @@ project(imgui)
 	#SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
 	SET(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 
-	#target_link_libraries(${PROJECT_NAME} d3dcompiler DXGI D3D12)
-	#d3dcompiler.lib;DXGI.lib;D3D12.lib;
+	#setting the plug-in folder in the solution
+	set_target_properties (${PROJECT_NAME} PROPERTIES
+    FOLDER vendors) 
