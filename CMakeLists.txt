@@ -17,14 +17,21 @@ project(imgui)
 	#making sure to add the common cpp flags, that are defined in the main cpp file
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${COMMON_CXX_FLAGS}")
 
-	file(COPY ${HEADER_FILES} DESTINATION "${CMAKE_SOURCE_DIR}/SirEngineThe3rdLib/vendors/includes/imgui" )
 
     #adding the executable
-    add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES} ${INCLUDES_FILES})
-	#set(CMAKE_BINARY_DIR  )
-	#SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
-	SET(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
+    add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES} ${HEADER_FILES})
 
-	#setting the plug-in folder in the solution
-	set_target_properties (${PROJECT_NAME} PROPERTIES
-    FOLDER vendors) 
+	if(APPLE)
+	elseif(UNIX)
+	elseif(WIN32)
+		#copying built lib to the output
+		add_custom_command(
+		TARGET ${PROJECT_NAME} 
+		POST_BUILD
+		COMMAND ${CMAKE_COMMAND} -E copy
+		  $<TARGET_FILE:${PROJECT_NAME}>
+		  ${CMAKE_SOURCE_DIR}/../builtDependencies/windows/$<CONFIGURATION>/$<TARGET_FILE_NAME:${PROJECT_NAME}>)		
+	endif()
+
+	file(COPY ${HEADER_FILES} DESTINATION ${CMAKE_SOURCE_DIR}/../builtDependencies/includes/imgui)
+
