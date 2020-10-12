@@ -1,5 +1,5 @@
-// dear imgui: Renderer for OpenGL2 (legacy OpenGL, fixed pipeline)
-// This needs to be used along with a Platform Binding (e.g. GLFW, SDL, Win32, custom..)
+// dear imgui: Renderer Backend for OpenGL2 (legacy OpenGL, fixed pipeline)
+// This needs to be used along with a Platform Backend (e.g. GLFW, SDL, Win32, custom..)
 
 // Implemented features:
 //  [X] Renderer: User texture binding. Use 'GLuint' OpenGL texture identifier as void*/ImTextureID. Read the FAQ about ImTextureID!
@@ -17,6 +17,7 @@
 // The GL2 code is unable to reset attributes or even call e.g. "glUseProgram(0)" because they don't exist in that API.
 
 #pragma once
+#include "imgui.h"      // IMGUI_IMPL_API
 
 IMGUI_IMPL_API bool     ImGui_ImplOpenGL2_Init();
 IMGUI_IMPL_API void     ImGui_ImplOpenGL2_Shutdown();

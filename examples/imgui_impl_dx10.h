@@ -1,8 +1,8 @@
-// dear imgui: Renderer for DirectX10
-// This needs to be used along with a Platform Binding (e.g. Win32)
+// dear imgui: Renderer Backend for DirectX10
+// This needs to be used along with a Platform Backend (e.g. Win32)
 
 // Implemented features:
-//  [X] Renderer: User texture binding. Use 'ID3D10ShaderResourceView*' as ImTextureID. Read the FAQ about ImTextureID!
+//  [X] Renderer: User texture backend. Use 'ID3D10ShaderResourceView*' as ImTextureID. Read the FAQ about ImTextureID!
 //  [X] Renderer: Support for large meshes (64k+ vertices) with 16-bit indices.
 
 // You can copy and use unmodified imgui_impl_* files in your project. See main.cpp for an example of using this.
@@ -10,6 +10,7 @@
 // https://github.com/ocornut/imgui
 
 #pragma once
+#include "imgui.h"      // IMGUI_IMPL_API
 
 struct ID3D10Device;
 
@@ -18,6 +19,6 @@ IMGUI_IMPL_API void     ImGui_ImplDX10_Shutdown();
 IMGUI_IMPL_API void     ImGui_ImplDX10_NewFrame();
 IMGUI_IMPL_API void     ImGui_ImplDX10_RenderDrawData(ImDrawData* draw_data);
 
-// Use if you want to reset your rendering device without losing ImGui state.
+// Use if you want to reset your rendering device without losing Dear ImGui state.
 IMGUI_IMPL_API void     ImGui_ImplDX10_InvalidateDeviceObjects();
 IMGUI_IMPL_API bool     ImGui_ImplDX10_CreateDeviceObjects();

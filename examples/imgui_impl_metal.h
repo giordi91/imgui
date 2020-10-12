@@ -1,5 +1,5 @@
-// dear imgui: Renderer for Metal
-// This needs to be used along with a Platform Binding (e.g. OSX)
+// dear imgui: Renderer Backend for Metal
+// This needs to be used along with a Platform Backend (e.g. OSX)
 
 // Implemented features:
 //  [X] Renderer: User texture binding. Use 'MTLTexture' as ImTextureID. Read the FAQ about ImTextureID!
@@ -9,12 +9,14 @@
 // If you are new to dear imgui, read examples/README.txt and read the documentation at the top of imgui.cpp.
 // https://github.com/ocornut/imgui
 
+#include "imgui.h"      // IMGUI_IMPL_API
+
 @class MTLRenderPassDescriptor;
 @protocol MTLDevice, MTLCommandBuffer, MTLRenderCommandEncoder;
 
 IMGUI_IMPL_API bool ImGui_ImplMetal_Init(id<MTLDevice> device);
 IMGUI_IMPL_API void ImGui_ImplMetal_Shutdown();
-IMGUI_IMPL_API void ImGui_ImplMetal_NewFrame(MTLRenderPassDescriptor *renderPassDescriptor);
+IMGUI_IMPL_API void ImGui_ImplMetal_NewFrame(MTLRenderPassDescriptor* renderPassDescriptor);
 IMGUI_IMPL_API void ImGui_ImplMetal_RenderDrawData(ImDrawData* draw_data,
                                                    id<MTLCommandBuffer> commandBuffer,
                                                    id<MTLRenderCommandEncoder> commandEncoder);

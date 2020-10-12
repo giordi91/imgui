@@ -1,4 +1,4 @@
-// dear imgui: Renderer + Platform Binding for Marmalade + IwGx
+// dear imgui: Renderer + Platform Backend for Marmalade + IwGx
 // Marmalade code: Copyright (C) 2015 by Giovanni Zito (this file is part of Dear ImGui)
 
 // Implemented features:
@@ -9,13 +9,14 @@
 // https://github.com/ocornut/imgui
 
 #pragma once
+#include "imgui.h"      // IMGUI_IMPL_API
 
 IMGUI_IMPL_API bool     ImGui_Marmalade_Init(bool install_callbacks);
 IMGUI_IMPL_API void     ImGui_Marmalade_Shutdown();
 IMGUI_IMPL_API void     ImGui_Marmalade_NewFrame();
 IMGUI_IMPL_API void     ImGui_Marmalade_RenderDrawData(ImDrawData* draw_data);
 
-// Use if you want to reset your rendering device without losing ImGui state.
+// Use if you want to reset your rendering device without losing Dear ImGui state.
 IMGUI_IMPL_API void     ImGui_Marmalade_InvalidateDeviceObjects();
 IMGUI_IMPL_API bool     ImGui_Marmalade_CreateDeviceObjects();
 
